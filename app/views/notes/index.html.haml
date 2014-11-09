@@ -5,18 +5,18 @@
     %th Title
     %th Content
     %th 
-    /%th 
-    /%th
+    %th
+    %th
 
   - @notes.each do |note|
     %tr
       %td= note.title
       %td= note.content
       %td= link_to 'Show', note
-      /%td= link_to 'Edit', edit_note_path(note)
-      /%td= link_to 'Destroy', note, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Edit', edit_note_path(note)
+      %td= link_to 'Destroy', note, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-/= link_to 'New Note', new_note_path
+= link_to 'New Note', new_note_path
 
