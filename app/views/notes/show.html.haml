@@ -1,8 +1,5 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @note.title
-%p
-  %b Content:
-  = @note.content
+= render partial: 'note', locals: { note: @note }
+
+= link_to 'Back to Notes', notes_path

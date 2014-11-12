@@ -19,6 +19,9 @@ gem 'devise'
 
 gem 'haml-rails'
 
+gem 'will_paginate',           '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
+
 gem 'bootstrap-sass', '>= 3.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'autoprefixer-rails'
