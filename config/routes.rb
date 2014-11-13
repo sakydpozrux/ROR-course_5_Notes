@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :notes
 
   #root to: 'home#index'
-  root to: 'notes#index'
+  get 'static_pages/home'
+  get 'static_pages/help'
+
+  root to: 'static_pages#home'
 end

@@ -1,9 +1,10 @@
-- provide(:title, 'Notes')
-%h1 Listing notes
+- provide(:title, 'Listing')
+.center
+  %h1 Listing notes
 
 .row
-  %aside.col-md-4
-    = link_to 'New Note', new_note_path
+  = link_to new_note_path, class: 'btn btn-default btn-lg' do
+    %i.glyphicon.glyphicon-plus-sign New Note
 
 .col-md-8
   %asd

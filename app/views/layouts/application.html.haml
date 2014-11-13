@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header.navbar.navbar-fixed-top.navbar-inverse
+      .container
+        = link_to "Notes", '#', id: "logo"
+        %nav
+          %ul.nav.navbar-nav.pull-right
+            %li
+              .glyphicon.glyphicon-home
+              = link_to 'Home', '#'
+            %li
+              .glyphicon.glyphicon-book
+              = link_to 'Help', '#'
+            %li
+              .glyphicon.glyphicon-user
+              = link_to 'Log in', '#'
+      .container
+        = yield
