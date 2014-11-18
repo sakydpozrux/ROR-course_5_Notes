@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_note, only: [:show, :update, :edit, :destroy]
 
   # GET /notes/new
   def new
@@ -8,14 +9,11 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
-    @note = current_user.notes.find(params[:id])
   end
 
   # PATCH/PUT /notes/1
   def update
-    @note = current_user.notes.find(params[:id])
-
-    if @note.update(params[:note].permit(:title, :content))
+    if @note.update(note_params)
       redirect_to @note
     else
       render 'edit'
@@ -24,7 +22,7 @@ class NotesController < ApplicationController
 
   # POST /notes
   def create
-    @note = current_user.notes.build(params.require(:note).permit(:title, :content))
+    @note = current_user.notes.build(note_params)
 
     if @note.save
       redirect_to @note
@@ -35,7 +33,6 @@ class NotesController < ApplicationController
   
   # GET /notes/1
   def show
-    @note = current_user.notes.find(params[:id])
   end
 
   # GET /notes
@@ -45,9 +42,17 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1
   def destroy
-    @note = current_user.notes.find(params[:id])
     @note.destroy
-    
     redirect_to notes_path
+  end
+
+  private
+
+  def find_note
+    @note = current_user.notes.find(params[:id])
+  end
+
+  def note_params
+    params.require(:note).permit(:title, :content)
   end
 end
